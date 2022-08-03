@@ -2,6 +2,7 @@ package com.technest.user.crud.model;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "users_table")
 public class User {
