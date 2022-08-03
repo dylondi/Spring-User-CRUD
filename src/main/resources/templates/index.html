@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Administrative Services</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container-fluid text-center">
+<h1>User Administrative Services</h1>
+    <div class="m-2">
+        <a class="h2" th:href="@{/users/create}">New User</a>
+    </div>
+    <div th:if="${message}" class="alert-success text-center">
+        [[${message}]]
+    </div>
+
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+              <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="user : ${userList}">
+                <tr>
+                    <td>[[${user.id}]]</td>
+                    <td>[[${user.fullName}]]</td>
+                    <td>[[${user.email}]]</td>
+                    <td><a class="h5 mr-4" th:href="@{'/users/update/' + ${user.id}}">Update</a></td>
+                    <td><a class="h5" th:href="@{'/users/delete/' + ${user.id}}">Delete</a></td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
